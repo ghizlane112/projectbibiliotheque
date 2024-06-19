@@ -3,12 +3,26 @@ package org.example.projectbibiliotheque.service;
 import org.example.projectbibiliotheque.entities.Ressource;
 import org.example.projectbibiliotheque.repositories.RessourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 @Service
 public class RessourceServiceImp implements RessourceService {
 @Autowired
 RessourceRepository ressourceRepository;
+
+    @Override
+    public Page<Ressource> getRessources(int pg) {
+        return ressourceRepository
+                .findAll(PageRequest.of(pg,15));
+    }
 
     @Override
     public Ressource getRessource(Long id) {
@@ -43,6 +57,7 @@ RessourceRepository ressourceRepository;
     @Override
     public void deleteRessource(Long idres) {
 
+    ressourceRepository.deleteById(idres);
     }
 
 
@@ -53,7 +68,7 @@ RessourceRepository ressourceRepository;
 
     @Override
     public Ressource getRessourceById(Long id) {
-        return null;
+        return ressourceRepository.findRessourceByIdRessource(id);
     }
 
     @Override
@@ -63,11 +78,27 @@ RessourceRepository ressourceRepository;
 
     @Override
     public void updateRessource(Ressource ressource) {
-
+     ressourceRepository.save(ressource);
     }
 
     @Override
-    public void saveRessource(Ressource existingRessource) {
+    public void saveImage(MultipartFile image) throws Exception {
+        if (!image.isEmpty()) {
+            try {
+                // Créer un nouveau fichier avec un nom unique dans le répertoire de destination
+                File destinationFile = new File("chemin/vers/le/repertoire/de/destination/" + image.getOriginalFilename());
+                // Copier le contenu du fichier d'entrée dans le fichier de destination
+                FileCopyUtils.copy(image.getInputStream(), new FileOutputStream(destinationFile));
+            } catch (IOException e) {
+                // Gérer l'exception si la copie échoue
+                throw new IOException("Impossible de sauvegarder le fichier", e);
+            }
+        } else {
+            // Gérer le cas où le fichier est vide
+            throw new IOException("Le fichier est vide");
+        }
+
+
 
     }
 

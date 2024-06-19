@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet">
+
+    <title>Registration</title>
+</head>
+<style>
+    * {
+
+        margin: 0%;
+        padding: 0%;
+    }
+    body {
+        font-size: 14px;
+        height:auto;
+        width: 100%;
+    }
+    .container {
+        width: 100%;
+        height:auto;
+        position: relative;
+        top: 0px;
+        left: 0px;
+        background: rgba(255,255,255,1);
+        opacity: 1;
+        border: 1px solid rgba(0,0,0,1);
+        overflow: hidden;
+
+    }
+    .container-right{
+        overflow: hidden;
+        background-color:  rgba(217,217,217,1);
+        height:  750px;
+        width: 630px;
+        float: right;
+
+    }
+
+    .vImage2  img{
+        width: 101px;
+        height: 73px;
+        opacity: 1;
+        position: absolute;
+        top: 46px;
+        right: 106px;
+        overflow: hidden;
+    }
+    .vImage1 img {
+        width: 626px;
+        height: 691px;
+        opacity: 1;
+        position: absolute;
+        top: 0px;
+        right: 30px;
+        overflow: hidden;
+    }
+
+    .v884_59 {
+         width: 415px;
+         color: rgba(13,79,78,1);
+         position: absolute;
+         top: 112px;
+         left: 63px;
+         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+         font-family: Cinzel Decorative;
+         font-weight: Bold;
+         font-size: 27px;
+         opacity: 1;
+         text-align: left;
+     }
+    .form1{
+        width: 470px;
+        height: 700px;
+        opacity: 1;
+        overflow: hidden;
+        margin-top: 23px;
+        position: absolute;top: 150px;left:-12px;
+    }
+
+    .vNom{
+        width: 49px;
+        color: rgba(0,0,0,1);
+        position:relative;
+        top:30px;
+        left:71px;
+        font-family: Cinzel Decorative;
+        font-weight: Bold;
+        font-size: 18px;
+        opacity: 1;
+        text-align: left;
+    }
+
+    .vPrenom1 {
+        width: 86px;
+        color: rgba(0,0,0,1);
+        position: relative;
+        top: 60px;
+        left: 71px;
+        font-family: Cinzel Decorative;
+        font-weight: Bold;
+        font-size: 18px;
+        opacity: 1;
+        text-align: left;
+    }
+    .vPrenom {
+        width: 374px;
+        height: 43px;
+        background: rgba(217,217,217,1);
+        opacity: 1;
+        position: relative;
+        top: 70px;
+        left: 63px;
+        border: 1px solid rgba(0,0,0,1);
+        border-top-left-radius: 17px;
+        border-top-right-radius: 17px;
+        border-bottom-left-radius: 17px;
+        border-bottom-right-radius: 17px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+    }
+    .vInputName {
+        width: 374px;
+        height: 43px;
+        background: rgba(217,217,217,1);
+        opacity: 1;
+        position: relative;
+        top: 45px;
+        left: 63px;
+        border: 1px solid rgba(0,0,0,1);
+        border-top-left-radius: 17px;
+        border-top-right-radius: 17px;
+        border-bottom-left-radius: 17px;
+        border-bottom-right-radius: 17px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+    }
+    .vEmail1{
+        width: 374px;
+        height: 43px;
+        background: rgba(217,217,217,1);
+        opacity: 1;
+        position: relative;
+        top: 90px;
+        left: 63px;
+        border: 1px solid rgba(0,0,0,1);
+        border-top-left-radius: 17px;
+        border-top-right-radius: 17px;
+        border-bottom-left-radius: 17px;
+        border-bottom-right-radius: 17px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+    }
+    .vEmailScolaire {
+        width: 161px;
+        color: rgba(0,0,0,1);
+        position: relative;
+        top: 80px;
+        left: 71px;
+        font-family: Cinzel Decorative;
+        font-weight: Bold;
+        font-size: 18px;
+        opacity: 1;
+        text-align: left;
+    }
+    .vMotdePasse {
+        width: 137px;
+        color: rgba(0,0,0,1);
+        position: relative;
+        top: 100px;
+        left: 71px;
+        font-family: Cinzel Decorative;
+        font-weight: Bold;
+        font-size: 18px;
+        opacity: 1;
+        text-align: left;
+    }
+
+    .vPassword1{
+        width: 374px;
+        height: 43px;
+        background: rgba(217,217,217,1);
+        opacity: 1;
+        position: relative;
+        top: 110px;
+        left: 63px;
+        border: 1px solid rgba(0,0,0,1);
+        border-top-left-radius: 17px;
+        border-top-right-radius: 17px;
+        border-bottom-left-radius: 17px;
+        border-bottom-right-radius: 17px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+    }
+    .vValide {
+        width: 149px;
+        height: 42px;
+        background: rgba(13,79,78,1);
+        opacity: 1;
+        position: relative;
+        top:140px;
+        left: 100px;
+        font-family: Cinzel Decorative;
+        font-weight: Bold;
+        font-size: 20px;
+        text-align: center;
+        color: rgba(255,255,255,1);
+        border: 1px solid rgba(0,0,0,1);
+        border-top-left-radius: 17px;
+        border-top-right-radius: 17px;
+        border-bottom-left-radius: 17px;
+        border-bottom-right-radius: 17px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+    }
+.link-primary{
+    width: 431px;
+    font-family: Cinzel Decorative;
+    font-weight: Bold;
+    font-size: 20px;
+    opacity: 1;
+    text-align: left;
+    list-style-type: none;
+    color:rgba(13,79,78,1);
+    position: relative;
+    top: 140px;
+    left:140px;
+}
+</style>
+<body>
+<div class="container">
+    <div class="container-right">
+        <div class="vImage2"><img src="/static/images/v880_19.png"></div>
+        <div class="vImage1 "><img src="/static/images/v876_2.png"></div></div>
+
+    <div class="row mt-5">
+        <div class="col-6 mx-auto">
+            <div class="vImage3"></div>
+            <h1 class="v884_59">Create Account in EMSI CityLibrary</h1>
+
+            <div class="form1">
+            <form
+                    method="post"
+                    role="form"
+                    th:action="@{/registration}"
+                    th:object="${user}"
+            >
+
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">
+                        Registration successful !!!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="vNom" for="name">Name</label><br>
+                    <input class="vInputName" id="name" name="name" type="text" placeholder="  Nom">
+                    <p class="text-danger" th:errors="*{name}"
+                       th:if="${#fields.hasErrors('name')}"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="vPrenom1" for="prenom">Prenom</label><br>
+                    <input class="vPrenom" id="prenom" name="prenom" type="text" placeholder="   Prenom">
+                    <p class="text-danger" th:errors="*{prenom}"
+                       th:if="${#fields.hasErrors('prenom')}"></p>
+                </div>
+                <div class="mb-3">
+                    <label  class="vEmailScolaire " for="email">Email</label><br>
+                    <input class="vEmail1" id="email" name="email" type="email" placeholder="   Email">
+                    <p class="text-danger" th:errors="*{email}"
+                       th:if="${#fields.hasErrors('email')}"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="vMotdePasse" for="password">Password</label><br>
+                    <input class="vPassword1" id="password" name="password" type="password" placeholder="     PasseWord">
+                    <p class="text-danger" th:errors="*{password}"
+                       th:if="${#fields.hasErrors('password')}"></p>
+                </div>
+                <div class="mb-3">
+                    <button class="vValide" type="submit">Valide</button>
+                    <a class="link-primary" th:href="@{/login}">Login</a>
+                </div>
+            </form></div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<script crossorigin="anonymous"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

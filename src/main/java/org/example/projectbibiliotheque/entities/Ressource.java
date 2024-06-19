@@ -20,6 +20,7 @@ public class Ressource {
     long idRessource;
 @Column(name = "Titre")
   String titre;
+String Image;
 @DateTimeFormat(pattern = "yyyy-MM-dd")
 Date datePublication;
 //private List<Enseignant> ListEnseignant;

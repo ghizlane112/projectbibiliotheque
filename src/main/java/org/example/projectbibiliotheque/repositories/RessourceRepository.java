@@ -5,6 +5,7 @@ import org.example.projectbibiliotheque.entities.Category;
 import org.example.projectbibiliotheque.entities.Ressource;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 @Repository
@@ -17,5 +18,6 @@ public interface RessourceRepository extends JpaRepository<Ressource, Long> {
     List<Ressource> findByTitreContaining(String term);
 
     Ressource deleteByTitre(String name);
+
 
 }
