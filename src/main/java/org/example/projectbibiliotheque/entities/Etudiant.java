@@ -4,6 +4,7 @@ package org.example.projectbibiliotheque.entities;
 import jakarta.persistence.*;
 
 @Entity
+
 public class Etudiant  extends Personne{
 
 @Id

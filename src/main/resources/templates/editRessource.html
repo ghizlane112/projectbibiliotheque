@@ -1,0 +1,84 @@
+<!-- editRessource.html -->
+
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Éditer une Ressource</title>
+</head>
+<style>
+    /* Style pour le corps de la page */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: rgba(13,79,78,1);;
+        margin: 0;
+        padding: 20px;
+    }
+
+    /* Style pour le titre */
+    h1 {
+        color: #ffffff;
+    }
+
+    /* Style pour le formulaire */
+    form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Style pour les champs de texte et de date */
+    input[type="text"],
+    input[type="date"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    /* Style pour le bouton de fichier */
+    input[type="file"] {
+        margin-bottom: 10px;
+    }
+
+    /* Style pour le bouton de soumission */
+    button {
+        background-color: #4CAF50; /* Vert */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+
+</style>
+<body>
+<h1>Éditer une Ressource</h1>
+<form action="/editRessource" method="post" th:object="${ressource}">
+    <input type="hidden" th:field="*{idRessource}"/>
+    <div>
+        <label>Titre :</label>
+        <input type="text" th:field="*{titre}"/>
+    </div>
+    <div>
+        <label>Date de Publication :</label>
+        <input type="date" th:field="*{datePublication}"/>
+    </div>
+    <div>
+        <label>Pdf:</label>
+        <input type="file" th:field="*{pdfData}"/>
+    </div>
+    <!-- Ajoutez d'autres champs selon vos besoins -->
+    <div>
+        <button type="submit">Enregistrer les modifications</button>
+    </div>
+</form>
+</body>
+</html>

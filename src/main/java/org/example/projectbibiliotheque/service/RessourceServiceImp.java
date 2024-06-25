@@ -1,5 +1,6 @@
 package org.example.projectbibiliotheque.service;
 
+import jakarta.transaction.Transactional;
 import org.example.projectbibiliotheque.entities.Ressource;
 import org.example.projectbibiliotheque.repositories.RessourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,10 +58,14 @@ RessourceRepository ressourceRepository;
           ResToBeEdited.setIdRessource(updatedRessource1.getIdRessource());
           ResToBeEdited.setTitre(updatedRessource1.getTitre());
           ResToBeEdited.setDatePublication(updatedRessource1.getDatePublication());
+            ResToBeEdited.setPdfData(updatedRessource1.getPdfData());
           ressourceRepository.save(ResToBeEdited);
         }
 
     }
+
+
+
 
     @Override
     public void deleteRessource(Long idres) {
@@ -74,6 +79,8 @@ RessourceRepository ressourceRepository;
     return  ressourceRepository.deleteByTitre(titre);
     }
 
+
+    @Transactional
     @Override
     public void savePdfData(Long idRessource, byte[] pdfData) {
 

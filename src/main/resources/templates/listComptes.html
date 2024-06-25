@@ -1,0 +1,87 @@
+<!-- listComptes.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des Comptes Utilisateur</title>
+</head>
+<style>
+    .table1{
+        position: relative;
+        top:190px;
+
+    }
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+
+    /* Style pour le titre */
+    h1 {
+
+        text-align: center;
+        color: #333;
+    }
+
+    /* Style pour la table */
+    table {
+        width: 95%;
+        margin: 20px auto;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: rgba(13,79,78,1);
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+<body>
+<h2>Liste des Comptes Utilisateur</h2>
+<div class="table1">
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Email</th>
+        <th scope="col">Catégorie</th>
+        <th  scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Utilisation de Thymeleaf pour itérer sur la liste des comptes -->
+    <tr th:each="users : ${user}">
+        <td th:text="${users.id}"></td>
+        <td th:text="${users.name}"></td>
+        <td th:text="${users.prenom}"></td>
+        <td th:text="${users.email}"></td>
+        <td th:text="${users.category}"></td>
+
+        <td>
+            <!-- Liens pour supprimer et éditer une ressource -->
+            <a onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette ressource ?')"
+               th:href="@{'/deleteCompte?id=' + ${users.id}}">Supprimer</a>
+            <a th:href="@{'/editCompte?id=' + ${users.id}}" >Éditer</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+
+
+</body>
+</html>

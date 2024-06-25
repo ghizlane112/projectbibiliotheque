@@ -26,6 +26,7 @@ Date datePublication;
 
 //private List<Enseignant> ListEnseignant;
 @Lob
+@Column(name = "pdf_data")
 private byte[] pdfData;
 
 

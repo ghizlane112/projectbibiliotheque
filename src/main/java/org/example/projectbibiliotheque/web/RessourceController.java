@@ -60,7 +60,7 @@ RessourceService ressourceService;
 
 
     @PostMapping("/ressource/{id}/pdf")
-    public ResponseEntity<String> uploadPdf(@PathVariable Long id,
+    public ResponseEntity<String> savePdfData(@PathVariable Long id,
                                             @RequestParam("pdfFile") MultipartFile pdfFile) {
         try {
             byte[] pdfBytes = pdfFile.getBytes();
