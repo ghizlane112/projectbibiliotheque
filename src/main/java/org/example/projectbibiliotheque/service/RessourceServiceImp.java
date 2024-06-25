@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RessourceServiceImp implements RessourceService {
@@ -25,8 +27,14 @@ RessourceRepository ressourceRepository;
     }
 
     @Override
+    public List<Ressource> getAllRessource() {
+        return ressourceRepository.findAll();
+    }
+
+    @Override
     public Ressource getRessource(Long id) {
-       return ressourceRepository.findRessourceByIdRessource(id);
+
+        return ressourceRepository.findRessourceByIdRessource(id);
     }
 
     @Override
@@ -67,13 +75,30 @@ RessourceRepository ressourceRepository;
     }
 
     @Override
-    public Ressource getRessourceById(Long id) {
-        return ressourceRepository.findRessourceByIdRessource(id);
+    public void savePdfData(Long idRessource, byte[] pdfData) {
+
+        Optional<Ressource> optionalRessource = ressourceRepository.findById(idRessource);
+        if (optionalRessource.isPresent()) {
+            Ressource ressource = optionalRessource.get();
+            ressource.setPdfData(pdfData);
+            ressourceRepository.save(ressource);
+        } else {
+            throw new RuntimeException("Ressource not found with id: " + idRessource);
+        }
+
+
+
     }
+
 
     @Override
     public void telechargerRessource(Long idRessource) {
 
+    }
+
+    @Override
+    public List<Ressource> findByNameContaining(String term) {
+      return  ressourceRepository.findByTitreContaining(term);
     }
 
     @Override

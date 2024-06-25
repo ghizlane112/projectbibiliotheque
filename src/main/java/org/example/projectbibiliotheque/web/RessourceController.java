@@ -3,8 +3,14 @@ package org.example.projectbibiliotheque.web;
 import org.example.projectbibiliotheque.entities.Ressource;
 import org.example.projectbibiliotheque.service.RessourceService;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class RessourceController {
@@ -32,6 +38,7 @@ RessourceService ressourceService;
     }
 
 
+
     @PutMapping("/ressource")
     void editRessource(@RequestParam Ressource updatedRessource1 ,
                                @RequestParam Long id){
@@ -48,21 +55,22 @@ RessourceService ressourceService;
         return ressourceService.deleteRessource(titre);
     }
 
-    @PostMapping("/image")
-    public boolean addImage(@RequestParam("file") MultipartFile image) {
 
+
+
+
+    @PostMapping("/ressource/{id}/pdf")
+    public ResponseEntity<String> uploadPdf(@PathVariable Long id,
+                                            @RequestParam("pdfFile") MultipartFile pdfFile) {
         try {
-            ressourceService.saveImage(image);
-
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
+            byte[] pdfBytes = pdfFile.getBytes();
+            ressourceService.savePdfData(id, pdfBytes);
+            return ResponseEntity.ok("PDF ajouté avec succès à la ressource.");
+        } catch (IOException e) {
             e.printStackTrace();
-            System.out.println(e);
-            return false;
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erreur lors de l'ajout du PDF à la ressource.");
         }
-        return true;
     }
-
 
 
 
